@@ -24,7 +24,7 @@ def split_nodes_delimiter(old_nodes, delimiter, text_type):
 		current_new_nodes = []
 		if node.text_type == t_t_text:
 			if node.text.count(delimiter) % 2 != 0:
-				raise ValueError("Invalid number of delimiters")
+				raise ValueError(f"Invalid number of delimiters: {node.text}")
 
 			split_node = node.text.split(delimiter)
 

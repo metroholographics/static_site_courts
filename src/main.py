@@ -1,37 +1,16 @@
-from textnode import *
-from htmlnode import *
-from inline_markdown import *
-from block_markdown import *
+from generator import *
+
+static_path = './static'
+public_path = './public'
+content_path = './content'
 
 def main():
-	text = """
-# This is a heading
+	if os.path.exists(public_path):
+		shutil.rmtree(public_path)
 
-## This is a heading with **bolded text**
+	copy_static_to_public(static_path, public_path)
+	generate_pages_recursive(content_path, './template.html', public_path)
 
-This paragraph has an [image](www.google.com)
-
-This is a paragraph of text. It has some **bold** and *italic* words inside of it.
-
-1. This is the first list item in a list block
-2. This is a different list item
-3. This is another list item
-	"""
-
-	code_text = """
-# This is a heading
-
-```push()```
-
-a normal paragraph
-
->quote block this is a quote
->from someone
-	"""
-
-	tag = markdown_to_html_node(text)
-
-	print(tag.to_html())
 
 if __name__ == "__main__":
 	main()
