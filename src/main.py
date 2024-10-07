@@ -1,6 +1,6 @@
 from generator import *
 
-static_path = './static/'
+static_path = './static'
 public_path = './public'
 content_path = './content'
 
